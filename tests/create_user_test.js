@@ -1,10 +1,14 @@
 Feature('Create User');
 
 var faker = require("faker");
+const bd = require('../bancodedados')
 
 const { home_page, login_page, register_page } = inject();
 
 Scenario('Criar usuario com sucesso', () => {
+
+    bd.faz_algo()
+    bd.cadastrar_usuario_banco()
 
     // HOME
     home_page.acessar_aplicacao();

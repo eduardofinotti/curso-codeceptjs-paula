@@ -3,6 +3,7 @@ const { setHeadlessWhen } = require("@codeceptjs/configure");
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
 setHeadlessWhen(process.env.HEADLESS);
+var hooks = require("./hooks");
 
 exports.config = {
   tests: "./tests/*_test.js",
@@ -22,7 +23,12 @@ exports.config = {
     login_page: './pages/login_page.js',
     register_page: './pages/register_page.js'
   },
-  bootstrap: null,
+  async bootstrap() {
+    await hooks.start();
+  },
+  async teardown() {
+    await hooks.stop();
+  },
   mocha: {
     "reporterOptions": {
       "reportDir": "output"
