@@ -9,11 +9,9 @@ Scenario('Criar usuario com sucesso', () => {
     // HOME
     home_page.acessar_aplicacao();
     home_page.acessar_login()
-
-    // LOGIN
+    // LOGIN - teste
     login_page.preencher_email_cadastro()
     login_page.entrar_cadastro()
-
     // REGISTER
     register_page.select_title(0)
     register_page.preencher_nome(faker.name.firstName())
